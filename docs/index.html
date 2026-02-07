@@ -812,7 +812,7 @@
 
 Texto: ${appState.originalText.substring(0, 1500)}`;
                 
-                const response = await callOpenRouterAPI(prompt, 'anthropic/claude-3.5-sonnet');
+                const response = await callOpenRouterAPI(prompt, 'openai/gpt-4o-mini');
                 
                 const typeMatch = response.match(/tipo[^:]*:\s*([^\n.]+)/i);
                 if (typeMatch && typeMatch[1]) {
@@ -853,7 +853,7 @@ Pontos fortes:
 
 Texto: ${appState.originalText}`;
                 
-                const response = await callOpenRouterAPI(prompt, 'anthropic/claude-3.5-sonnet');
+                const response = await callOpenRouterAPI(prompt, 'openai/gpt-4o-mini');
                 
                 const parts = response.split(/Pontos fortes:|Pontos positivos:/i);
                 
@@ -918,7 +918,7 @@ Prompt de melhoria:
 
 Texto: ${appState.originalText}`;
                 
-                const response = await callOpenRouterAPI(prompt, 'anthropic/claude-3.5-sonnet');
+                const response = await callOpenRouterAPI(prompt, 'openai/gpt-4o-mini');
                 
                 const parts = response.split(/Prompt de melhoria:|Prompt sugerido:/i);
                 let weaknessesText = '';
