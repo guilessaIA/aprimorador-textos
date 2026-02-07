@@ -861,8 +861,11 @@ Texto: ${appState.originalText}`;
                     appState.analysisSummary = parts[0].trim();
                     elements.analysisSummary.textContent = appState.analysisSummary;
                     
-                    const strengthsText = parts[1].trim();
-                    const strengthsList = strengthsText.split(/\n\s*[-•*]\s*/).filter(item => item.trim().length > 0);
+                    const strengthsList = strengthsText
+ 		      .split(/\n+/)
+                      .map(s => s.replace(/^\s*[-•*]\s*/, '').trim())
+                      .filter(s => s.length > 0);
+
                     
                     appState.analysisStrengths = strengthsList;
                     
