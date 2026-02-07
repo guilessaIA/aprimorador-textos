@@ -861,10 +861,14 @@ Texto: ${appState.originalText}`;
                     appState.analysisSummary = parts[0].trim();
                     elements.analysisSummary.textContent = appState.analysisSummary;
                     
-                    const strengthsList = strengthsText
- 		      .split(/\n+/)
-                      .map(s => s.replace(/^\s*[-•*]\s*/, '').trim())
-                      .filter(s => s.length > 0);
+                // Parte após "Pontos fortes" contém a lista de pontos fortes.
+                const strengthsText = parts[1].trim();
+                // Dividir por linhas e remover marcadores como traços, bullets ou asteriscos
+                // no início de cada item. Isso evita duplicação de hífens ou bullets.
+                const strengthsList = strengthsText
+                    .split(/\n+/)
+                    .map(s => s.replace(/^\s*[-•*]+\s*/, '').trim())
+                    .filter(s => s.length > 0);
 
                     
                     appState.analysisStrengths = strengthsList;
